@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +13,7 @@
             padding: 20px;
             min-height: 100vh;
         }
-        
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -22,13 +23,13 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             padding: 30px;
         }
-        
+
         .header {
             text-align: center;
             margin-bottom: 30px;
             color: #2c3e50;
         }
-        
+
         .header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
@@ -37,14 +38,14 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         .loan-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
-        
+
         .info-card {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
@@ -55,22 +56,22 @@
             transform: translateY(0);
             transition: transform 0.3s ease;
         }
-        
+
         .info-card:hover {
             transform: translateY(-5px);
         }
-        
+
         .info-card h3 {
             margin: 0 0 10px 0;
             font-size: 1.1em;
             opacity: 0.9;
         }
-        
+
         .info-card .value {
             font-size: 1.8em;
             font-weight: bold;
         }
-        
+
         .controls {
             margin-bottom: 20px;
             text-align: center;
@@ -79,7 +80,7 @@
             justify-content: center;
             gap: 10px;
         }
-        
+
         .btn {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
@@ -91,22 +92,22 @@
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
         }
-        
+
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
         }
-        
+
         .btn-success {
             background: linear-gradient(135deg, #28a745, #20c997);
             box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
         }
-        
+
         .btn-warning {
             background: linear-gradient(135deg, #ffc107, #fd7e14);
             box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
         }
-        
+
         .quick-amounts {
             display: flex;
             justify-content: center;
@@ -114,7 +115,7 @@
             margin: 20px 0;
             flex-wrap: wrap;
         }
-        
+
         .quick-btn {
             background: linear-gradient(135deg, #28a745, #20c997);
             color: white;
@@ -125,11 +126,11 @@
             font-size: 14px;
             transition: all 0.3s ease;
         }
-        
+
         .quick-btn:hover {
             transform: scale(1.05);
         }
-        
+
         .table-container {
             background: white;
             border-radius: 15px;
@@ -137,12 +138,12 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
-        
+
         table {
             width: 100%;
             border-collapse: collapse;
         }
-        
+
         th {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
@@ -154,7 +155,7 @@
             z-index: 10;
             font-size: 14px;
         }
-        
+
         td {
             padding: 12px 8px;
             text-align: right;
@@ -162,26 +163,26 @@
             transition: background-color 0.3s ease;
             font-size: 14px;
         }
-        
+
         tr:nth-child(even) {
             background-color: #f8f9ff;
         }
-        
+
         tr:hover {
             background-color: #e3e8ff;
         }
-        
+
         .numero-cuota {
             text-align: center;
             font-weight: bold;
             color: #667eea;
         }
-        
+
         .amount {
             font-family: 'Courier New', monospace;
             font-weight: bold;
         }
-        
+
         .pago-input {
             width: 90px;
             padding: 5px;
@@ -193,30 +194,48 @@
             background: #f8f9ff;
             transition: border-color 0.3s ease;
         }
-        
+
         .pago-input:focus {
             outline: none;
             border-color: #667eea;
             box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
         }
-        
+
+        .value-input {
+            width: 100%;
+            padding: 4px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            text-align: right;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            /* background: #f8f9ff; */
+            transition: border-color 0.3s ease;
+        }
+
+        .value-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+
         .pago-extra {
             background-color: #e8f5e8 !important;
         }
-        
+
         .prestamo-terminado {
             background-color: #fff3cd !important;
             font-style: italic;
             color: #856404;
         }
-        
+
         .summary {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             margin-top: 30px;
         }
-        
+
         .summary-card {
             background: linear-gradient(135deg, #ff6b6b, #ee5a24);
             color: white;
@@ -225,23 +244,23 @@
             text-align: center;
             box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
         }
-        
+
         .summary-card.success {
             background: linear-gradient(135deg, #28a745, #20c997);
             box-shadow: 0 10px 20px rgba(40, 167, 69, 0.3);
         }
-        
+
         .summary-card h3 {
             margin: 0 0 10px 0;
             opacity: 0.9;
             font-size: 1em;
         }
-        
+
         .summary-card .value {
             font-size: 1.4em;
             font-weight: bold;
         }
-        
+
         .alert {
             background: linear-gradient(135deg, #28a745, #20c997);
             color: white;
@@ -252,32 +271,33 @@
             font-weight: bold;
             display: none;
         }
-        
+
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
                 margin: 10px;
             }
-            
+
             table {
                 font-size: 12px;
             }
-            
-            th, td {
+
+            th,
+            td {
                 padding: 6px 4px;
             }
-            
+
             .pago-input {
                 width: 70px;
                 font-size: 12px;
             }
         }
-        
+
         .table-scroll {
             max-height: 70vh;
             overflow-y: auto;
         }
-        
+
         .instructions {
             background: #e3f2fd;
             border-left: 4px solid #2196f3;
@@ -285,64 +305,67 @@
             margin: 20px 0;
             border-radius: 5px;
         }
-        
+
         .instructions h4 {
             margin: 0 0 10px 0;
             color: #1976d2;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
             <h1>🏦 Calculadora de Amortización Acelerada</h1>
             <p>Simula pagos extras para reducir el tiempo de tu préstamo</p>
         </div>
-        
+
         <div class="instructions">
             <h4>📝 Instrucciones:</h4>
-            <p>• <strong>Cuota mínima:</strong> 1,557 Bs cada mes<br>
-            • <strong>Pagos extras:</strong> Modifica los montos en la columna "Tu Pago" para simular pagos mayores<br>
-            • <strong>Botones rápidos:</strong> Usa los botones para aplicar el mismo monto a todas las cuotas<br>
-            • <strong>Recalcular:</strong> Presiona "Recalcular" después de hacer cambios</p>
+            <p>• <strong>Cuota mínima:</strong> <span id="cuota-minima-msg"> 2107Bs </span> cada mes<br>
+                • <strong>Pagos extras:</strong> Modifica los montos en la columna "Tu Pago" para simular pagos
+                mayores<br>
+                • <strong>Botones rápidos:</strong> Usa los botones para aplicar el mismo monto a todas las cuotas<br>
+                • <strong>Recalcular:</strong> Presiona "Recalcular" después de hacer cambios</p>
         </div>
-        
+
         <div class="loan-info">
             <div class="info-card">
-                <h3>Capital Prestado</h3>
-                <div class="value">70,000 Bs</div>
+                <h3>Capital Prestado (Bs)</h3>
+                <input type="number" id="capital-input" class="value value-input" value="107770">
             </div>
             <div class="info-card">
-                <h3>Tasa Anual</h3>
-                <div class="value">12%</div>
+                <h3>Tasa Anual (%)</h3>
+                <input type="number" id="tasa-input" class="value value-input" value="14">
+            </div>
+            <div class="info-card">
+                <h3>Plazo Original (meses)</h3>
+                <input type="number" id="plazo-input" class="value value-input" value="48">
             </div>
             <div class="info-card">
                 <h3>Cuota Mínima</h3>
-                <div class="value">1,557 Bs</div>
-            </div>
-            <div class="info-card">
-                <h3>Plazo Original</h3>
-                <div class="value">60 meses</div>
+                <div class="value value-input" id="cuota-minima-display">2107 Bs</div>
             </div>
         </div>
-        
+
         <div class="quick-amounts">
-            <button class="quick-btn" onclick="fillAllPayments(1557)">Cuota Mínima (1,557)</button>
+            <button class="quick-btn" onclick="fillAllPayments(2107)">Cuota Mínima ( <span id="cuota-min-quick">
+                    2107</span>)</button>
             <button class="quick-btn" onclick="fillAllPayments(3000)">3,000 Bs</button>
             <button class="quick-btn" onclick="fillAllPayments(5000)">5,000 Bs</button>
             <button class="quick-btn" onclick="fillAllPayments(8000)">8,000 Bs</button>
             <button class="quick-btn" onclick="fillAllPayments(10000)">10,000 Bs</button>
         </div>
-        
+
         <div class="controls">
             <button class="btn btn-success" onclick="recalculate()">🔄 Recalcular Tabla</button>
             <button class="btn" onclick="exportToCSV()">📊 Exportar CSV</button>
             <button class="btn" onclick="printTable()">🖨️ Imprimir</button>
-            <button class="btn btn-warning" onclick="resetTable()">↩️ Restablecer</button>
+            <button class="btn btn-warning" onclick="resetTablePayment()">↩️ Restablecer Tu Pago</button>
         </div>
-        
+
         <div class="alert" id="alert"></div>
-        
+
         <div class="table-container">
             <div class="table-scroll">
                 <table id="amortization-table">
@@ -364,177 +387,237 @@
                 </table>
             </div>
         </div>
-        
+
         <div class="summary">
             <div class="summary-card">
                 <h3>Total a Pagar</h3>
-                <div class="value" id="total-pagado">93,361 Bs</div>
+                <div class="value value-input" id="total-pagado">93,361 Bs</div>
             </div>
             <div class="summary-card">
                 <h3>Total Intereses</h3>
-                <div class="value" id="total-intereses">23,361 Bs</div>
+                <div class="value value-input" id="total-intereses">23,361 Bs</div>
             </div>
             <div class="summary-card success">
                 <h3>Tiempo Estimado</h3>
-                <div class="value" id="tiempo-final">60 meses</div>
+                <div class="value value-input" id="tiempo-final">48 meses</div>
             </div>
             <div class="summary-card success">
                 <h3>Ahorro en Intereses</h3>
-                <div class="value" id="ahorro-intereses">0 Bs</div>
+                <div class="value value-input" id="ahorro-intereses">0 Bs</div>
             </div>
             <div class="summary-card success">
                 <h3>Tiempo Ahorrado</h3>
-                <div class="value" id="tiempo-ahorrado">0 meses</div>
+                <div class="value value-input" id="tiempo-ahorrado">0 meses</div>
+            </div>
+            <div class="summary-card success">
+                <h3>Monto Total Extra</h3>
+                <div class="value value-input" id="total-extra">0 Bs</div>
             </div>
         </div>
     </div>
 
     <script>
-        // Datos del préstamo
-        const capital = 70000;
-        const tasaAnual = 0.12;
-        const tasaMensual = tasaAnual / 12;
-        const meses = 60;
-        
-        // Calcular cuota mínima mensual
-        const cuotaMinima = capital * (tasaMensual * Math.pow(1 + tasaMensual, meses)) / (Math.pow(1 + tasaMensual, meses) - 1);
-        
-        let tableData = [];
-        
-        function generateInitialTable() {
+        let currentCuotaMinima = 0; // Variable global para la cuota mínima actual
+
+        function calculateAmortization(capital, tasaAnual, meses) {
+            const tasaMensual = (tasaAnual / 100) / 12;
+            const cuotaMinimaCalculada = capital * (tasaMensual * Math.pow(1 + tasaMensual, meses)) / (Math.pow(1 + tasaMensual, meses) - 1);
+
+            currentCuotaMinima = cuotaMinimaCalculada; // Actualizar la variable global
+            document.getElementById('cuota-minima-display').textContent = formatCurrency(cuotaMinimaCalculada);
+            document.getElementById('cuota-minima-msg').textContent = formatCurrency(cuotaMinimaCalculada);
+            document.getElementById('cuota-min-quick').textContent = formatCurrency(cuotaMinimaCalculada);
+
             const tbody = document.getElementById('table-body');
-            tbody.innerHTML = '';
-            tableData = [];
-            
+            tbody.innerHTML = ''; // Limpiar la tabla para regenerarla
+
             let saldoPendiente = capital;
             let fechaInicio = new Date();
-            
-            for (let i = 1; i <= meses && saldoPendiente > 0.01; i++) {
+
+            for (let i = 1; i <= meses; i++) {
                 const interesCuota = saldoPendiente * tasaMensual;
-                const capitalCuota = Math.min(cuotaMinima - interesCuota, saldoPendiente);
-                
-                // Calcular fecha de cada cuota
+                const capitalCuota = Math.min(cuotaMinimaCalculada - interesCuota, saldoPendiente);
+
                 const fechaCuota = new Date(fechaInicio);
                 fechaCuota.setMonth(fechaCuota.getMonth() + i);
-                
+
+                const fechaRow = fechaCuota.toLocaleDateString('es-ES', { year: 'numeric', month: 'short' })
+
                 const rowData = {
                     cuota: i,
-                    fecha: fechaCuota.toLocaleDateString('es-ES', { year: 'numeric', month: 'short' }),
-                    pagoUsuario: cuotaMinima,
-                    cuotaMinima: cuotaMinima,
+                    fecha: fechaRow,
+                    pagoUsuario: cuotaMinimaCalculada,
+                    cuotaMinima: cuotaMinimaCalculada,
                     intereses: interesCuota,
                     capitalPago: capitalCuota,
                     pagoExtra: 0,
                     saldoPendiente: saldoPendiente - capitalCuota
                 };
-                
-                tableData.push(rowData);
+
                 saldoPendiente -= capitalCuota;
-                
+
                 const row = tbody.insertRow();
                 row.innerHTML = `
                     <td class="numero-cuota">${i}</td>
-                    <td style="text-align: center;">${rowData.fecha}</td>
+                    <td style="text-align: center;">${fechaRow}</td>
                     <td style="text-align: center;">
-                        <input type="number" class="pago-input" id="pago-${i}" value="${Math.round(cuotaMinima)}" min="${Math.round(cuotaMinima)}" step="100">
+                        <input type="number" class="pago-input" id="pago-${i}" value="${Math.round(cuotaMinimaCalculada)}" min="${Math.round(cuotaMinimaCalculada)}" step="100">
                     </td>
-                    <td class="amount">${formatCurrency(cuotaMinima)}</td>
+                    <td class="amount min-amount">${formatCurrency(cuotaMinimaCalculada)}</td>
                     <td class="amount">${formatCurrency(interesCuota)}</td>
                     <td class="amount">${formatCurrency(capitalCuota)}</td>
-                    <td class="amount">0.00 Bs</td>
+                    <td class="amount amount-extra">0.00 Bs</td>
                     <td class="amount">${formatCurrency(Math.max(0, saldoPendiente))}</td>
                 `;
             }
         }
-        
-        function recalculate() {
+
+        function getTotalAmountExtra() {
+            extras = 0
+
+            extrasVal = document.getElementsByClassName("amount-extra")
+            for (let index = 0; index < extrasVal.length; index++) {
+                value = extrasVal[index].textContent || ''
+                if (value) {
+                    value = value.replace(' Bs', '').replace('.', '')
+                    value = Number(value)
+                    extras += value
+                }
+            }
+            return extras
+        }
+
+        function recalculate(resetPayInput = false) {
+            const capital = parseFloat(document.getElementById('capital-input').value);
+            const tasaAnual = parseFloat(document.getElementById('tasa-input').value);
+            const meses = parseInt(document.getElementById('plazo-input').value);
+
+            // Validaciones básicas
+            if (isNaN(capital) || capital <= 0) { showAlert('Por favor, ingrese un Capital Prestado válido.'); return; }
+            if (isNaN(tasaAnual) || tasaAnual <= 0) { showAlert('Por favor, ingrese una Tasa Anual válida.'); return; }
+            if (isNaN(meses) || meses <= 0) { showAlert('Por favor, ingrese un Plazo Original válido.'); return; }
+
+            const tasaMensual = (tasaAnual / 100) / 12;
+            const cuotaMinimaCalculada = capital * (tasaMensual * Math.pow(1 + tasaMensual, meses)) / (Math.pow(1 + tasaMensual, meses) - 1);
+            currentCuotaMinima = cuotaMinimaCalculada; // Actualizar la variable global
+            document.getElementById('cuota-minima-display').textContent = formatCurrency(cuotaMinimaCalculada);
+            document.getElementById('cuota-minima-msg').textContent = formatCurrency(cuotaMinimaCalculada);
+            document.getElementById('cuota-min-quick').textContent = formatCurrency(cuotaMinimaCalculada);
+
+            minAmounts = document.getElementsByClassName('min-amount')
+            for (let index = 0; index < minAmounts.length; index++) {
+                minAmounts[index].textContent = formatCurrency(cuotaMinimaCalculada);
+            }
+
             const tbody = document.getElementById('table-body');
-            const rows = tbody.querySelectorAll('tr');
-            
+            let rows = tbody.querySelectorAll('tr');
+
+            // Almacenar los valores actuales de los inputs de pago del usuario
+            const userPayments = {};
+
+            if (!resetPayInput) {
+                rows.forEach(row => {
+                    const cuotaNum = parseInt(row.querySelector('.numero-cuota').textContent);
+                    const pagoInput = row.querySelector('.pago-input');
+                    if (pagoInput) {
+                        userPayments[cuotaNum] = parseFloat(pagoInput.value);
+                    }
+                });
+            }
+
+            // Si el número de meses ha cambiado, regenerar la tabla completamente
+            if (rows.length !== meses) {
+                calculateAmortization(capital, tasaAnual, meses);
+                rows = tbody.querySelectorAll('tr'); // Volver a obtener las filas después de la regeneración
+            }
+
             let saldoPendiente = capital;
             let totalPagado = 0;
             let totalIntereses = 0;
             let cuotasUsadas = 0;
-            
-            // Limpiar filas anteriores que puedan estar marcadas como terminadas
+
             rows.forEach(row => {
-                row.classList.remove('prestamo-terminado');
+                row.classList.remove('prestamo-terminado', 'pago-extra'); // Limpiar clases
                 row.style.display = 'table-row';
             });
-            
+
             for (let i = 0; i < rows.length && saldoPendiente > 0.01; i++) {
                 const row = rows[i];
+                const cuotaNum = parseInt(row.querySelector('.numero-cuota').textContent);
                 const pagoInput = row.querySelector('.pago-input');
-                const pagoUsuario = parseFloat(pagoInput.value) || cuotaMinima;
-                
-                // Calcular intereses del mes
+
+                // Usar el valor del usuario si existe, de lo contrario, la cuota mínima calculada
+                let pagoUsuario = userPayments[cuotaNum] || cuotaMinimaCalculada;
+
+                // Asegurarse de que el pago no sea menor a la cuota mínima calculada
+                if (pagoUsuario < cuotaMinimaCalculada) {
+                    pagoUsuario = cuotaMinimaCalculada;
+                }
+                if (pagoInput) pagoInput.value = Math.round(pagoUsuario); // Actualizar el input con el valor final
+
                 const interesCuota = saldoPendiente * tasaMensual;
-                
-                // El pago mínimo debe cubrir los intereses
+
                 const pagoEfectivo = Math.max(pagoUsuario, interesCuota + 0.01);
-                
-                // Capital que se puede pagar
+
                 const capitalDisponible = pagoEfectivo - interesCuota;
                 const capitalPago = Math.min(capitalDisponible, saldoPendiente);
-                
-                // Pago extra (lo que excede la cuota mínima)
-                const pagoExtra = Math.max(0, pagoEfectivo - cuotaMinima);
-                
-                // Actualizar saldo
+
+                const pagoExtra = Math.max(0, pagoEfectivo - cuotaMinimaCalculada);
+
                 saldoPendiente -= capitalPago;
                 totalPagado += pagoEfectivo;
                 totalIntereses += interesCuota;
                 cuotasUsadas++;
-                
-                // Actualizar la fila
+
                 const cells = row.cells;
-                cells[4].innerHTML = formatCurrency(interesCuota); // Intereses
-                cells[5].innerHTML = formatCurrency(capitalPago); // A Capital
-                cells[6].innerHTML = formatCurrency(pagoExtra); // Pago Extra
-                cells[7].innerHTML = formatCurrency(Math.max(0, saldoPendiente)); // Saldo
-                
-                // Marcar si hay pago extra
+                cells[4].innerHTML = formatCurrency(interesCuota);
+                cells[5].innerHTML = formatCurrency(capitalPago);
+                cells[6].innerHTML = formatCurrency(pagoExtra);
+                cells[7].innerHTML = formatCurrency(Math.max(0, saldoPendiente));
+
                 if (pagoExtra > 1) {
                     row.classList.add('pago-extra');
-                } else {
-                    row.classList.remove('pago-extra');
                 }
-                
-                // Si el préstamo se terminó, actualizar el input al monto exacto necesario
+
                 if (saldoPendiente <= 0.01 && capitalPago < capitalDisponible) {
                     const pagoFinalExacto = interesCuota + (saldoPendiente + capitalPago);
-                    pagoInput.value = Math.round(pagoFinalExacto);
+                    if (pagoInput) pagoInput.value = Math.round(pagoFinalExacto);
                     totalPagado = totalPagado - pagoEfectivo + pagoFinalExacto;
                     saldoPendiente = 0;
                 }
             }
-            
-            // Ocultar cuotas no necesarias
+
             for (let i = cuotasUsadas; i < rows.length; i++) {
                 rows[i].style.display = 'none';
             }
-            
-            // Actualizar resumen
-            updateSummary(totalPagado, totalIntereses, cuotasUsadas);
-            
-            // Mostrar alerta si el préstamo se terminó antes
+
+            updateSummary(totalPagado, totalIntereses, cuotasUsadas, capital, meses);
+
             if (cuotasUsadas < meses) {
                 showAlert(`¡Felicidades! Terminarás de pagar tu préstamo en ${cuotasUsadas} meses en lugar de ${meses} meses. Ahorrarás ${meses - cuotasUsadas} meses de pagos.`);
+            } else {
+                hideAlert(); // Ocultar alerta si no hay ahorro de tiempo
             }
         }
-        
-        function updateSummary(totalPagado, totalIntereses, mesesUsados) {
-            const interesesOriginales = (cuotaMinima * meses) - capital;
+
+        function updateSummary(totalPagado, totalIntereses, mesesUsados, originalCapital, originalMeses) {
+            const tasaAnualOriginal = parseFloat(document.getElementById('tasa-input').value);
+            const tasaMensualOriginal = (tasaAnualOriginal / 100) / 12;
+            const cuotaMinimaOriginal = originalCapital * (tasaMensualOriginal * Math.pow(1 + tasaMensualOriginal, originalMeses)) / (Math.pow(1 + tasaMensualOriginal, originalMeses) - 1);
+
+            const interesesOriginales = (cuotaMinimaOriginal * originalMeses) - originalCapital;
             const ahorroIntereses = interesesOriginales - totalIntereses;
-            const tiempoAhorrado = meses - mesesUsados;
-            
+            const totalExtras = interesesOriginales - totalIntereses;
+            const tiempoAhorrado = originalMeses - mesesUsados;
+
             document.getElementById('total-pagado').textContent = formatCurrency(totalPagado);
             document.getElementById('total-intereses').textContent = formatCurrency(totalIntereses);
             document.getElementById('tiempo-final').textContent = `${mesesUsados} meses`;
             document.getElementById('ahorro-intereses').textContent = formatCurrency(ahorroIntereses);
             document.getElementById('tiempo-ahorrado').textContent = `${tiempoAhorrado} meses`;
+            document.getElementById('total-extra').textContent = formatCurrency(getTotalAmountExtra());
         }
-        
+
         function fillAllPayments(amount) {
             const inputs = document.querySelectorAll('.pago-input');
             inputs.forEach(input => {
@@ -544,37 +627,39 @@
             });
             recalculate();
         }
-        
-        function resetTable() {
-            generateInitialTable();
-            updateSummary((cuotaMinima * meses), (cuotaMinima * meses) - capital, meses);
+
+        function resetTablePayment() {
+            // document.getElementById('capital-input').value = 70000;
+            // document.getElementById('tasa-input').value = 12;
+            // document.getElementById('plazo-input').value = 60;
+            recalculate(recalculate); // Recalcular con los valores por defecto
             hideAlert();
         }
-        
+
         function showAlert(message) {
             const alert = document.getElementById('alert');
             alert.textContent = message;
             alert.style.display = 'block';
             setTimeout(hideAlert, 8000);
         }
-        
+
         function hideAlert() {
             document.getElementById('alert').style.display = 'none';
         }
-        
+
         function formatCurrency(amount) {
             return new Intl.NumberFormat('es-BO', {
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 0
             }).format(Math.round(amount)) + ' Bs';
         }
-        
+
         function exportToCSV() {
             let csvContent = "Cuota,Fecha,Tu Pago,Cuota Minima,Intereses,A Capital,Pago Extra,Saldo\n";
-            
+
             const tbody = document.getElementById('table-body');
             const rows = tbody.querySelectorAll('tr');
-            
+
             rows.forEach((row, index) => {
                 if (row.style.display !== 'none') {
                     const cells = row.cells;
@@ -582,28 +667,26 @@
                     csvContent += `${cells[0].textContent},${cells[1].textContent},${pagoInput.value},${cells[3].textContent},${cells[4].textContent},${cells[5].textContent},${cells[6].textContent},${cells[7].textContent}\n`;
                 }
             });
-            
+
             const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
             link.download = 'tabla_amortizacion_personalizada.csv';
             link.click();
         }
-        
+
         function printTable() {
             window.print();
         }
-        
-        // Generar la tabla al cargar la página
-        document.addEventListener('DOMContentLoaded', function() {
-            generateInitialTable();
-            
-            // Agregar event listeners para recalcular cuando cambien los inputs
-            document.addEventListener('change', function(e) {
+
+        document.addEventListener('DOMContentLoaded', function () {
+            recalculate(); // Generar la tabla con los valores iniciales de los inputs
+
+            document.addEventListener('change', function (e) {
                 if (e.target.classList.contains('pago-input')) {
-                    // Validar que el pago no sea menor a la cuota mínima
-                    if (parseFloat(e.target.value) < cuotaMinima) {
-                        e.target.value = Math.round(cuotaMinima);
+                    // Validar que el pago no sea menor a la cuota mínima actual
+                    if (parseFloat(e.target.value) < currentCuotaMinima) {
+                        e.target.value = Math.round(currentCuotaMinima);
                     }
                     recalculate();
                 }
@@ -611,4 +694,5 @@
         });
     </script>
 </body>
+
 </html>

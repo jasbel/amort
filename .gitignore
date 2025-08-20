@@ -1,0 +1,4 @@
+node_modules
+dist
+src/App.vue
+package-lock.json

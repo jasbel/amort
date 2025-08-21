@@ -362,6 +362,11 @@
             <button class="btn" onclick="exportToCSV()">📊 Exportar CSV</button>
             <button class="btn" onclick="printTable()">🖨️ Imprimir</button>
             <button class="btn btn-warning" onclick="resetTablePayment()">↩️ Restablecer Tu Pago</button>
+
+            <div class="btn">
+                <label style="font-size: 0.8em;">Fecha Inicio</label>
+                <input type="date" id="date-input" class="value value-input">
+            </div>
         </div>
 
         <div class="alert" id="alert"></div>
@@ -417,7 +422,19 @@
     </div>
 
     <script>
+        function getDate() {
+            init = document.getElementById('date-input')
+            console.log(
+            new Date(init?.value)
+        )
+            return init?.value ? new Date(init.value) : new Date() 
+
+        }
+
         let currentCuotaMinima = 0; // Variable global para la cuota mínima actual
+
+        
+
 
         function calculateAmortization(capital, tasaAnual, meses) {
             const tasaMensual = (tasaAnual / 100) / 12;
@@ -432,7 +449,8 @@
             tbody.innerHTML = ''; // Limpiar la tabla para regenerarla
 
             let saldoPendiente = capital;
-            let fechaInicio = new Date();
+            let fechaInicio = getDate();
+            console.log({fechaInicio})
 
             for (let i = 1; i <= meses; i++) {
                 const interesCuota = saldoPendiente * tasaMensual;
@@ -680,10 +698,15 @@
         }
 
         document.addEventListener('DOMContentLoaded', function () {
+            getDate()
+
             recalculate(); // Generar la tabla con los valores iniciales de los inputs
 
             document.addEventListener('change', function (e) {
+                getDate()
+
                 if (e.target.classList.contains('pago-input')) {
+
                     // Validar que el pago no sea menor a la cuota mínima actual
                     if (parseFloat(e.target.value) < currentCuotaMinima) {
                         e.target.value = Math.round(currentCuotaMinima);
@@ -691,7 +714,9 @@
                     recalculate();
                 }
             });
+
         });
+
     </script>
 </body>
 

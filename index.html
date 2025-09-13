@@ -383,6 +383,7 @@
                             <th>Intereses</th>
                             <th>A Capital</th>
                             <th>Pago Extra</th>
+                            <th>Seguro Desgravamen</th>
                             <th>Saldo</th>
                         </tr>
                     </thead>
@@ -417,6 +418,10 @@
             <div class="summary-card success">
                 <h3>Monto Total Extra</h3>
                 <div class="value value-input" id="total-extra">0 Bs</div>
+            </div>
+            <div class="summary-card">
+                <h3>Total Seguro Desgravamen</h3>
+                <div class="value value-input" id="total-seguro">0 Bs</div>
             </div>
         </div>
     </div>
@@ -474,6 +479,8 @@
 
                 saldoPendiente -= capitalCuota;
 
+                const seguroDesgravamen = saldoPendiente * (0.011 / 12);
+
                 const row = tbody.insertRow();
                 row.innerHTML = `
                     <td class="numero-cuota">${i}</td>
@@ -485,6 +492,7 @@
                     <td class="amount">${formatCurrency(interesCuota)}</td>
                     <td class="amount">${formatCurrency(capitalCuota)}</td>
                     <td class="amount amount-extra">0.00 Bs</td>
+                    <td class="amount">${formatCurrency(seguroDesgravamen)}</td>
                     <td class="amount">${formatCurrency(Math.max(0, saldoPendiente))}</td>
                 `;
             }
@@ -553,6 +561,7 @@
             let totalPagado = 0;
             let totalIntereses = 0;
             let cuotasUsadas = 0;
+            let totalSeguro = 0;
 
             rows.forEach(row => {
                 row.classList.remove('prestamo-terminado', 'pago-extra'); // Limpiar clases
@@ -582,6 +591,9 @@
 
                 const pagoExtra = Math.max(0, pagoEfectivo - cuotaMinimaCalculada);
 
+                const seguroDesgravamen = saldoPendiente * (2.43 / 100 / 12);
+                totalSeguro += seguroDesgravamen;
+
                 saldoPendiente -= capitalPago;
                 totalPagado += pagoEfectivo;
                 totalIntereses += interesCuota;
@@ -591,7 +603,8 @@
                 cells[4].innerHTML = formatCurrency(interesCuota);
                 cells[5].innerHTML = formatCurrency(capitalPago);
                 cells[6].innerHTML = formatCurrency(pagoExtra);
-                cells[7].innerHTML = formatCurrency(Math.max(0, saldoPendiente));
+                cells[7].innerHTML = formatCurrency(seguroDesgravamen);
+                cells[8].innerHTML = formatCurrency(Math.max(0, saldoPendiente));
 
                 if (pagoExtra > 1) {
                     row.classList.add('pago-extra');
@@ -609,7 +622,7 @@
                 rows[i].style.display = 'none';
             }
 
-            updateSummary(totalPagado, totalIntereses, cuotasUsadas, capital, meses);
+            updateSummary(totalPagado, totalIntereses, cuotasUsadas, capital, meses, totalSeguro);
 
             if (cuotasUsadas < meses) {
                 showAlert(`¡Felicidades! Terminarás de pagar tu préstamo en ${cuotasUsadas} meses en lugar de ${meses} meses. Ahorrarás ${meses - cuotasUsadas} meses de pagos.`);
@@ -618,7 +631,7 @@
             }
         }
 
-        function updateSummary(totalPagado, totalIntereses, mesesUsados, originalCapital, originalMeses) {
+        function updateSummary(totalPagado, totalIntereses, mesesUsados, originalCapital, originalMeses, totalSeguro) {
             const tasaAnualOriginal = parseFloat(document.getElementById('tasa-input').value);
             const tasaMensualOriginal = (tasaAnualOriginal / 100) / 12;
             const cuotaMinimaOriginal = originalCapital * (tasaMensualOriginal * Math.pow(1 + tasaMensualOriginal, originalMeses)) / (Math.pow(1 + tasaMensualOriginal, originalMeses) - 1);
@@ -628,12 +641,13 @@
             const totalExtras = interesesOriginales - totalIntereses;
             const tiempoAhorrado = originalMeses - mesesUsados;
 
-            document.getElementById('total-pagado').textContent = formatCurrency(totalPagado);
+            document.getElementById('total-pagado').textContent = formatCurrency(totalPagado + totalSeguro);
             document.getElementById('total-intereses').textContent = formatCurrency(totalIntereses);
             document.getElementById('tiempo-final').textContent = `${mesesUsados} meses`;
             document.getElementById('ahorro-intereses').textContent = formatCurrency(ahorroIntereses);
             document.getElementById('tiempo-ahorrado').textContent = `${tiempoAhorrado} meses`;
             document.getElementById('total-extra').textContent = formatCurrency(getTotalAmountExtra());
+            document.getElementById('total-seguro').textContent = formatCurrency(totalSeguro);
         }
 
         function fillAllPayments(amount) {
@@ -673,7 +687,7 @@
         }
 
         function exportToCSV() {
-            let csvContent = "Cuota,Fecha,Tu Pago,Cuota Minima,Intereses,A Capital,Pago Extra,Saldo\n";
+            let csvContent = "Cuota,Fecha,Tu Pago,Cuota Minima,Intereses,A Capital,Pago Extra,Seguro Desgravamen,Saldo\n";
 
             const tbody = document.getElementById('table-body');
             const rows = tbody.querySelectorAll('tr');
@@ -682,7 +696,7 @@
                 if (row.style.display !== 'none') {
                     const cells = row.cells;
                     const pagoInput = row.querySelector('.pago-input');
-                    csvContent += `${cells[0].textContent},${cells[1].textContent},${pagoInput.value},${cells[3].textContent},${cells[4].textContent},${cells[5].textContent},${cells[6].textContent},${cells[7].textContent}\n`;
+                    csvContent += `${cells[0].textContent},${cells[1].textContent},${pagoInput.value},${cells[3].textContent},${cells[4].textContent},${cells[5].textContent},${cells[6].textContent},${cells[7].textContent},${cells[8].textContent}\n`;
                 }
             });
 

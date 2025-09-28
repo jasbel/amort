@@ -8,6 +8,7 @@ export default {
     const tasaSeguroAnual = ref(1.998);
     const amortizationTable = ref([]);
     const alertMessage = ref('');
+    const dateInput = ref(new Date().toISOString().slice(0, 10));
 
     const summary = ref({
       totalPagado: 0,
@@ -19,6 +20,15 @@ export default {
       totalExtra: 0,
     });
 
+    const getDate = () => {
+        console.log("dateInput", dateInput?.value);
+        if (dateInput?.value) {
+            const [year, month, day] = dateInput.value.split('-').map(Number);
+            return new Date(year, month - 1, day);
+        }
+        return new Date();
+    }
+    
     const currentCuotaMinima = computed(() => {
       if (capital.value <= 0 || tasaAnual.value <= 0 || plazo.value <= 0) return 0;
       const tasaMensual = (tasaAnual.value / 100) / 12;
@@ -38,7 +48,7 @@ export default {
       const cuotaMinimaCalculada = currentCuotaMinima.value;
       const newTable = [];
       let saldoPendiente = capital;
-      let fechaInicio = new Date();
+      let fechaInicio = getDate();
 
       for (let i = 1; i <= meses; i++) {
         const interesCuota = saldoPendiente * tasaMensual;
@@ -46,13 +56,14 @@ export default {
         const capitalCuota = Math.min(cuotaMinimaCalculada - interesCuota, saldoPendiente);
         const fechaCuota = new Date(fechaInicio);
         fechaCuota.setMonth(fechaCuota.getMonth() + i);
+
         const fechaRow = fechaCuota.toLocaleDateString('es-ES', { year: 'numeric', month: 'short' });
 
         newTable.push({
           cuota: i,
           fecha: fechaRow,
           pagoUsuario: Math.round(cuotaMinimaCalculada + seguroDesgravamen),
-          cuotaMinima: cuotaMinimaCalculada,
+          cuotaMinima: cuotaMinimaCalculada + seguroDesgravamen,
           intereses: interesCuota,
           capitalPago: capitalCuota,
           pagoExtra: 0,
@@ -218,6 +229,8 @@ export default {
       resetTablePayment,
       exportToCSV,
       printTable,
+      dateInput,
+      getDate,
     };
   },
 };

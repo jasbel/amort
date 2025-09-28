@@ -27,6 +27,10 @@
         <input type="number" v-model.number="plazo" class="value value-input">
       </div>
       <div class="info-card">
+        <h3>Tasa Seg. Desgravamen (%)</h3>
+        <input type="number" v-model.number="tasaSeguroAnual" @change="recalculate()" class="value value-input" step="0.001">
+      </div>
+      <div class="info-card">
         <h3>Cuota Mínima</h3>
         <div class="value value-input">{{ formatCurrency(currentCuotaMinima) }}</div>
       </div>
@@ -45,6 +49,11 @@
       <button class="btn" @click="exportToCSV()">📊 Exportar CSV</button>
       <button class="btn" @click="printTable()">🖨️ Imprimir</button>
       <button class="btn btn-warning" @click="resetTablePayment()">↩️ Restablecer Tu Pago</button>
+
+      <div class="btn">
+          <label style="font-size: 0.8em;">Fecha Inicio</label>
+          <input type="date"  v-model.lazy="dateInput" id="date-input" class="value value-input">
+      </div>
     </div>
 
     <div class="alert" v-if="alertMessage">{{ alertMessage }}</div>
@@ -61,7 +70,7 @@
               <th>Intereses</th>
               <th>A Capital</th>
               <th>Pago Extra</th>
-              <th>Seguro de desgravamen</th>
+              <th>Seg. desg.</th>
               <th>Saldo</th>
             </tr>
           </thead>
@@ -70,7 +79,7 @@
               <td class="numero-cuota">{{ row.cuota }}</td>
               <td style="text-align: center;">{{ row.fecha }}</td>
               <td style="text-align: center;">
-                <input type="number" class="pago-input" v-model.number="row.pagoUsuario" @change="recalculate()" :min="Math.round(currentCuotaMinima)" step="100">
+                <input type="number" class="pago-input" v-model.number="row.pagoUsuario" @change="recalculate()" :min="Math.round(row.cuotaMinima)" step="100">
               </td>
               <td class="amount min-amount">{{ formatCurrency(row.cuotaMinima) }}</td>
               <td class="amount">{{ formatCurrency(row.intereses) }}</td>

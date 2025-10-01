@@ -1,11 +1,26 @@
 import { ref, onMounted, computed } from 'vue';
 
+const data1 = {
+  capital: 107770,
+  tasaAnual: 14,
+  plazo: 48,
+  tasaSeguroAnual: 1.998,
+}
+const data2 = {
+  capital: 140000,
+  tasaAnual: 11.84,
+  plazo: 60,
+  tasaSeguroAnual: 2.35,
+}
+
+const current = data2
+
 export default {
   setup() {
-    const capital = ref(107770);
-    const tasaAnual = ref(14);
-    const plazo = ref(48);
-    const tasaSeguroAnual = ref(1.998);
+    const capital = ref(current.capital);
+    const tasaAnual = ref(current.tasaAnual);
+    const plazo = ref(current.plazo);
+    const tasaSeguroAnual = ref(current.tasaSeguroAnual);
     const amortizationTable = ref([]);
     const alertMessage = ref('');
     const dateInput = ref(new Date().toISOString().slice(0, 10));
